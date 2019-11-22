@@ -1,4 +1,4 @@
-package com.example.engineering_ai;
+package com.example.engineering_ai.model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

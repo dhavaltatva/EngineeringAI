@@ -1,20 +1,27 @@
-package com.example.engineering_ai;
+package com.example.engineering_ai.ui;
+
+import com.example.engineering_ai.R;
+import com.example.engineering_ai.model.Hit;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.paging.PagedList;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ItemAdapter extends PagedListAdapter<Hit, ItemAdapter.ItemViewHolder> {
+
+    public CallBack callBack;
 
     private static DiffUtil.ItemCallback<Hit> DIFF_CALLBACK =
         new DiffUtil.ItemCallback<Hit>() {
@@ -32,9 +39,10 @@ public class ItemAdapter extends PagedListAdapter<Hit, ItemAdapter.ItemViewHolde
 
     private Context mCtx;
 
-    ItemAdapter(Context mCtx) {
+    ItemAdapter(Context mCtx,CallBack callBack) {
         super(DIFF_CALLBACK);
         this.mCtx = mCtx;
+        this.callBack = callBack;
     }
 
     @NonNull
@@ -65,11 +73,23 @@ public class ItemAdapter extends PagedListAdapter<Hit, ItemAdapter.ItemViewHolde
 
         Switch aSwitch;
 
-        public ItemViewHolder(View itemView) {
+        ItemViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.tvTitle);
             createAt = itemView.findViewById(R.id.tvCreatedAt);
             aSwitch = itemView.findViewById(R.id.switchMain);
+            aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    PagedList<Hit> currentList = getCurrentList();
+                    currentList.get(getAdapterPosition()).setOn(isChecked);
+                    callBack.OnSwitch(currentList);
+                }
+            });
         }
+    }
+
+    interface CallBack{
+        void OnSwitch(PagedList<Hit> cHitPagedList);
     }
 }

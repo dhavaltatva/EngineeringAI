@@ -1,10 +1,11 @@
-package com.example.engineering_ai
+package com.example.engineering_ai.persistent
 
 import androidx.paging.DataSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.engineering_ai.model.Hit
 
 @Dao
 interface RedditPostDao {

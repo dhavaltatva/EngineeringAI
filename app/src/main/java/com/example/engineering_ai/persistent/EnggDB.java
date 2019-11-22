@@ -1,4 +1,4 @@
-package com.example.engineering_ai;
+package com.example.engineering_ai.persistent;
 
 import android.content.Context;
 
@@ -14,5 +14,5 @@ public abstract class EnggDB extends RoomDatabase {
             .build();
     }
 
-    public abstract RedditPostDao redditPostDao();
+    public abstract EnggDao enggDao();
 }

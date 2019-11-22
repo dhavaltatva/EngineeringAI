@@ -1,4 +1,4 @@
-package com.example.engineering_ai;
+package com.example.engineering_ai.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

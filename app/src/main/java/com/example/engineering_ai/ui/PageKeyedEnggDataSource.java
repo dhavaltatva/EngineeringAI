@@ -1,4 +1,8 @@
-package com.example.engineering_ai;
+package com.example.engineering_ai.ui;
+
+import com.example.engineering_ai.model.EnggModel;
+import com.example.engineering_ai.model.Hit;
+import com.example.engineering_ai.remote.ApiRepo;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -7,7 +11,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PageKeyedEnggDataSource extends PageKeyedDataSource<String,Hit> {
+public class PageKeyedEnggDataSource extends PageKeyedDataSource<String, Hit> {
 
     public MutableLiveData<Boolean> networkState = new MutableLiveData<>();
     public MutableLiveData<Boolean> initialLoad  = new MutableLiveData<>();

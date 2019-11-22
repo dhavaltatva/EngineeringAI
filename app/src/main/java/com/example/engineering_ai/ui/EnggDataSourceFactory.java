@@ -1,4 +1,6 @@
-package com.example.engineering_ai;
+package com.example.engineering_ai.ui;
+
+import com.example.engineering_ai.model.Hit;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -6,7 +8,7 @@ import androidx.paging.DataSource;
 
 public class EnggDataSourceFactory extends  DataSource.Factory<String, Hit> {
 
-    MutableLiveData<PageKeyedEnggDataSource> dataSource = new MutableLiveData<PageKeyedEnggDataSource>();
+    public MutableLiveData<PageKeyedEnggDataSource> dataSource = new MutableLiveData<PageKeyedEnggDataSource>();
 
     @NonNull
     @Override
